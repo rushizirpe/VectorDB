@@ -3,6 +3,8 @@
 
 This repository contains an implementation of a Vector Database, a specialized database designed for efficient storage and retrieval of high-dimensional vectors. Ideal for applications such as machine learning, similarity search, and data analysis.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JledBgKF_maHA1qxY_FCgVx0O8Qgxvys)
+
 ## Features
 
 - **Efficient Vector Storage:** Store and manage high-dimensional vectors in a space-efficient manner.
