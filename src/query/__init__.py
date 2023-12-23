@@ -1,2 +1,2 @@
 # src/query/__init__.py
-from .query import Query
+from .query import QueryProcessor

@@ -1,5 +1,5 @@
 # src/query/query.py
-class Query:
+class QueryProcessor:
     def __init__(self, database):
         self.database = database
 

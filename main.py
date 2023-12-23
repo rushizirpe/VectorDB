@@ -7,13 +7,13 @@
 # db_inst = Query()
 
 # main.py
-
+import torch
 from src.embeddings.without_gpu import WithoutGPU
 from src.embeddings.with_gpu import WithGPU
 from src.database.annoy_database import AnnoyDatabase
 from src.database.faiss_database import FaissDatabase
 from src.query.query import QueryProcessor
-
+import json
 def main():
     # Initialize embeddings (choose either WithGPU or WithoutGPU based on availability)
     embeddings = WithGPU() if torch.cuda.is_available() else WithoutGPU()
@@ -26,7 +26,7 @@ def main():
     database = AnnoyDatabase(embeddings, num_trees=10)
 
     # Populate the database
-    populate_database(database, data)
+    # populate_database(database, data)
 
     # Initialize query processor
     query_processor = QueryProcessor(embeddings, database)
