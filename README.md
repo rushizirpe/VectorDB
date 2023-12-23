@@ -30,7 +30,7 @@ python main.py
 ```
 
 ## Structure
-
+```
 Vector-Database-Project/
 ├── notebooks/
 │   └── vector_database.ipynb
@@ -56,7 +56,7 @@ Vector-Database-Project/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
-
+```
 
 ## Contributions
 
