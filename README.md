@@ -29,6 +29,35 @@ This repository contains an implementation of a Vector Database, a specialized d
 python main.py
 ```
 
+## Structure
+
+Vector-Database-Project/
+├── notebooks/
+│   └── vector_database.ipynb
+├── src/
+│   ├── embeddings/
+│   │   ├── __init__.py
+│   │   ├── without_gpu.py
+│   │   └── with_gpu.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── annoy_database.py
+│   │   └── faiss_database.py
+│   ├── query/
+│   │   ├── __init__.py
+│   │   └── query.py
+│   └── utils/
+│       ├── __init__.py
+│       └── helper_functions.py
+├── data/
+│   └── combined_questions_filtered.json
+├── tests/
+│   └── test_queries.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+
 ## Contributions
 
 Contributions are welcome! Feel free to open issues, submit pull requests, or suggest improvements.
