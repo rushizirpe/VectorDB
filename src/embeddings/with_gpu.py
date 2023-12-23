@@ -2,7 +2,7 @@
 from transformers import BertTokenizer, BertModel
 import torch
 
-class EmbeddingsWithGPU:
+class WithGPU:
     def __init__(self):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')

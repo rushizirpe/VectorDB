@@ -14,10 +14,16 @@ class AnnoyDatabase:
 
         self.annoy_index.build(num_trees)
 
-    def get_document_embedding(self, text):
+    def get_document_embedding(self, text, type = "cpu"):
         # Implement the embedding function based on your chosen method
-        pass
-
+        if type.lower() =="cpu":
+            emb = EmbeddingsWithoutGPU()
+            emb.get_document_embedding(text)
+        elif type.lower() =="gpu":
+            emb = EmbeddingsWithGPU()
+            emb.get_document_embedding(text)
+        else:
+            AssertionError("Device not mentioned")
     def query_database(self, query_text, num_neighbors=5):
         query_embedding = self.get_document_embedding(query_text)
         neighbor_ids = self.annoy_index.get_nns_by_vector(query_embedding, num_neighbors, search_k=-1)
