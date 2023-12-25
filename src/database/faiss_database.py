@@ -2,6 +2,8 @@
 import faiss
 import torch
 import numpy as np
+from ..embeddings.with_gpu import WithGPU
+from ..embeddings.without_gpu import WithoutGPU 
 
 class FaissDatabase:
     def __init__(self, vector_dim, num_clusters, documents):
@@ -13,9 +15,16 @@ class FaissDatabase:
         self.index.train(document_embeddings)
         self.index.add(document_embeddings)
 
-    def get_document_embedding(self, text):
+    def get_document_embedding(self, text, type = "cpu"):
         # Implement the embedding function based on your chosen method
-        pass
+        if type.lower() =="cpu":
+            emb = WithoutGPU()
+            emb.get_document_embedding(text)
+        elif type.lower() =="gpu":
+            emb = WithGPU()
+            emb.get_document_embedding(text)
+        else:
+            AssertionError("Device not mentioned")
 
     def query_database(self, query_text, num_neighbors=5):
         query_embedding = self.get_document_embedding(query_text)[:vector_dim]
