@@ -14,6 +14,7 @@ from src.database.annoy_database import AnnoyDatabase
 from src.database.faiss_database import FaissDatabase
 from src.query.query import QueryProcessor
 import json
+
 def main():
     # Initialize embeddings (choose either WithGPU or WithoutGPU based on availability)
     embeddings = WithGPU() if torch.cuda.is_available() else WithoutGPU()
@@ -24,9 +25,6 @@ def main():
 
     # Initialize database (choose either AnnoyDatabase or FaissDatabase)
     database = AnnoyDatabase(embeddings, num_trees=10)
-
-    # Populate the database
-    # populate_database(database, data)
 
     # Initialize query processor
     query_processor = QueryProcessor(embeddings, database)
@@ -44,7 +42,6 @@ def main():
 
 def load_data(data_path):
     # Implement your actual data loading logic here
-    # For example, if your data is in JSON format:
     with open(data_path, 'r') as json_file:
         data = json.load(json_file)
     return data
