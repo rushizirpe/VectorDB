@@ -14,3 +14,4 @@ class WithGPU:
             outputs = self.model(**input_tensor)
         embedding = outputs.last_hidden_state.mean(dim=1).squeeze().cpu().numpy()
         return embedding
+
