@@ -46,6 +46,7 @@ def load_data(data_path):
         data = json.load(json_file)
     return data
 
+
 def populate_database(database, data):
     # Add data to the database
     for doc_id, doc_text in enumerate(data):
