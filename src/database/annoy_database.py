@@ -6,7 +6,7 @@ from ..embeddings.with_gpu import WithGPU
 from ..embeddings.without_gpu import WithoutGPU 
 
 class AnnoyDatabase:
-    def __init__(self, vector_dim, num_trees, documents):
+    def __init__(self, num_trees, documents, vector_dim=512):
         self.annoy_index = AnnoyIndex(vector_dim, 'angular')
         self.documents = documents
 

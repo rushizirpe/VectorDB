@@ -1,12 +1,5 @@
-# from src.query.query import Query
-# from src.database.annoy_database import AnnoyDatabase
-
-
-# db_inst = AnnoyDatabase()
-
-# db_inst = Query()
-
 # main.py
+
 import torch
 from src.embeddings.without_gpu import WithoutGPU
 from src.embeddings.with_gpu import WithGPU
@@ -17,14 +10,14 @@ import json
 
 def main():
     # Initialize embeddings (choose either WithGPU or WithoutGPU based on availability)
-    embeddings = WithGPU() if torch.cuda.is_available() else WithoutGPU()
+    # embeddings = WithGPU() if torch.cuda.is_available() else WithoutGPU()
 
     # Load data
     data_path = "data/combined_questions_filtered.json"
     data = load_data(data_path)
     docs = [triplet["answer"] for triplet in data]
     
-    # Initialize database (choose either AnnoyDatabase or FaissDatabase)
+    # Initialize database (AnnoyDatabase or FaissDatabase)
     database = AnnoyDatabase(num_trees=10, documents=docs)
 
     # Initialize query processor
@@ -42,16 +35,9 @@ def main():
         print(meaning)
 
 def load_data(data_path):
-    with open(data_path, 'r') as json_file:
+    with open(data_path, 'r', encoding = "utf-8") as json_file:
         data = json.load(json_file)
     return data
-
-
-def populate_database(database, data):
-    # Add data to the database
-    for doc_id, doc_text in enumerate(data):
-        embedding = embeddings.get_document_embedding(doc_text)
-        database.add_item(doc_id, embedding)
 
 if __name__ == "__main__":
     main()
