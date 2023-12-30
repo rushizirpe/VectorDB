@@ -15,8 +15,8 @@ def main():
     # Load data
     data_path = "data/combined_questions_filtered.json"
     data = load_data(data_path)
-    docs = [triplet["answer"] for triplet in data]
-    
+    docs = [triplet["answer"] for triplet in data][:10]
+
     # Initialize database (AnnoyDatabase or FaissDatabase)
     database = AnnoyDatabase(num_trees=10, documents=docs)
 
@@ -31,8 +31,8 @@ def main():
 
     # Display the results
     print("Similar Meanings:")
-    for meaning in similar_meanings:
-        print(meaning)
+    for idx, meaning in enumerate(similar_meanings):
+        print(idx, meaning)
 
 def load_data(data_path):
     with open(data_path, 'r', encoding = "utf-8") as json_file:
