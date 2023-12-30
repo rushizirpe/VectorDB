@@ -22,18 +22,19 @@ def main():
     # Load data
     data_path = "data/combined_questions_filtered.json"
     data = load_data(data_path)
-
+    docs = [triplet["answer"] for triplet in data]
+    
     # Initialize database (choose either AnnoyDatabase or FaissDatabase)
-    database = AnnoyDatabase(embeddings, num_trees=10)
+    database = AnnoyDatabase(num_trees=10, documents=docs)
 
     # Initialize query processor
-    query_processor = QueryProcessor(embeddings, database)
+    query_processor = QueryProcessor(database)
 
     # Get user input (prompt)
     user_input = input("Enter a prompt: ")
 
     # Process the query and get similar meanings
-    similar_meanings = query_processor.process_query(user_input, num_neighbors=5)
+    similar_meanings = query_processor.execute_query(user_input, num_neighbors=5)
 
     # Display the results
     print("Similar Meanings:")
@@ -41,7 +42,6 @@ def main():
         print(meaning)
 
 def load_data(data_path):
-    # Implement your actual data loading logic here
     with open(data_path, 'r') as json_file:
         data = json.load(json_file)
     return data
