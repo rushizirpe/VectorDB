@@ -13,3 +13,4 @@ similar_meanings = query_processor.execute_query(user_input, num_neighbors=5)
 print("Similar Meanings:")
 for idx, meaning in enumerate(similar_meanings):
     print(idx, meaning)
+    
