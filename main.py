@@ -1,5 +1,4 @@
 # main.py
-
 import torch
 from src.embeddings.without_gpu import WithoutGPU
 from src.embeddings.with_gpu import WithGPU
@@ -9,7 +8,7 @@ from src.query.query import QueryProcessor
 import json
 
 def main():
-    # Initialize embeddings (choose either WithGPU or WithoutGPU based on availability)
+    # Initialize embeddings (either WithGPU or WithoutGPU based on availability)
     # embeddings = WithGPU() if torch.cuda.is_available() else WithoutGPU()
 
     # Load data
